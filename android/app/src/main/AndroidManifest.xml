@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="zone.yue.flutter_cue">
    <application
-        android:label="flutter_cue"
+        android:label="FlutterCue!"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
