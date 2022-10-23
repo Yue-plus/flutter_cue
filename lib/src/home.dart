@@ -108,12 +108,13 @@ class _HomeState extends State<Home> {
               '人数：$index/${students.length - 1}',
               style: const TextStyle(fontSize: 32),
             ),
-            const SizedBox(height: 24),
-            Text(
-              students[index],
-              style: const TextStyle(fontSize: 100, fontFamily: '楷体'),
+            Padding(
+              padding: const EdgeInsets.all(24),
+              child: Text(
+                students[index],
+                style: const TextStyle(fontSize: 100, fontFamily: '楷体'),
+              ),
             ),
-            const SizedBox(height: 24),
             Row(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -136,9 +137,11 @@ class _HomeState extends State<Home> {
                 ),
               ],
             ),
-            const SizedBox(height: 24),
-            Text(notArrivedList != '' ? '以下同学未到：$notArrivedList' : ''),
-            const SizedBox(height: 32),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(0, 24, 0, 32),
+              child: SelectableText(
+                  notArrivedList != '' ? '以下同学未到：$notArrivedList' : ''),
+            ),
           ],
         ),
       ),
