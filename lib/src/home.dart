@@ -75,10 +75,10 @@ class _HomeState extends State<Home> {
     /// 设置说简体中文
     await flutterTts.setLanguage("zh-CN");
 
-    /// 设置说话速度
+    /// 设置说话速度；范围 0.0~1.0
     await flutterTts.setSpeechRate(2.0);
 
-    /// 设置说话音量
+    /// 设置说话音量；范围 0.0~1.0
     await flutterTts.setVolume(1.0);
 
     /// 设置音高；默认为 1.0；范围 0.5~2.0
@@ -98,52 +98,51 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text(title)),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
-          children: [
-            Text(
-              '人数：$index/${students.length - 1}',
-              style: const TextStyle(fontSize: 32),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(24),
+      body: ListView(
+        children: [
+          Text(
+            '人数：$index/${students.length - 1}',
+            textAlign: TextAlign.center,
+            style: const TextStyle(fontSize: 32),
+          ),
+          SizedBox(
+            height: MediaQuery.of(context).size.height * 0.48,
+            child: FittedBox(
               child: Text(
                 students[index],
-                style: const TextStyle(fontSize: 100, fontFamily: '楷体'),
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontFamily: '楷体'),
               ),
             ),
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              textBaseline: TextBaseline.ideographic,
-              children: [
-                IconButton(
-                  onPressed: _refresh,
-                  iconSize: 64,
-                  icon: const Icon(Icons.refresh),
-                ),
-                IconButton(
-                  onPressed: _check,
-                  iconSize: 64,
-                  icon: const Icon(Icons.check),
-                ),
-                IconButton(
-                  onPressed: _skip,
-                  iconSize: 64,
-                  icon: const Icon(Icons.skip_next),
-                ),
-              ],
-            ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 24, 0, 32),
-              child: SelectableText(
-                  notArrivedList != '' ? '以下同学未到：$notArrivedList' : ''),
-            ),
-          ],
-        ),
+          ),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            textBaseline: TextBaseline.ideographic,
+            children: [
+              IconButton(
+                onPressed: _refresh,
+                iconSize: 64,
+                icon: const Icon(Icons.refresh),
+              ),
+              IconButton(
+                onPressed: _check,
+                iconSize: 64,
+                icon: const Icon(Icons.check),
+              ),
+              IconButton(
+                onPressed: _skip,
+                iconSize: 64,
+                icon: const Icon(Icons.skip_next),
+              ),
+            ],
+          ),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 24, 0, 32),
+            child: SelectableText(
+                notArrivedList != '' ? '以下同学未到：$notArrivedList' : ''),
+          ),
+        ],
       ),
     );
   }
