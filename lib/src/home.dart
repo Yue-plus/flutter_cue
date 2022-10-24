@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_cue/src/students.dart';
 import 'package:flutter_tts/flutter_tts.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../main.dart';
 
@@ -97,7 +98,16 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(title)),
+      appBar: AppBar(
+        title: const Text(title),
+        actions: [
+          IconButton(
+            onPressed: () =>
+                launchUrl(Uri.parse('https://github.com/Yue-plus/flutter_cue')),
+            icon: const Icon(Icons.info),
+          ),
+        ],
+      ),
       body: ListView(
         children: [
           Text(
