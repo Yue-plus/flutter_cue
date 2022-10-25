@@ -67,8 +67,23 @@ class _HomeState extends State<Home> {
       IosTextToSpeechAudioMode.voicePrompt,
     );
 
+    // Android 端设置
+
+    /// 0 表示立即开始发声。如果该值大于零，则根据参数设置以毫秒为单位的静默期
+    await flutterTts.setSilence(0);
+
+    // await flutterTts.isLanguageInstalled("zh-CN");
+    // await flutterTts.areLanguagesInstalled(["zh-CN"]);
+
+    /// `0` 表示 `QUEUE_FLUSH` ——队列模式，其中播放队列中的所有条目
+    /// （要播放的媒体和要合成的文本）都被丢弃并替换为新条目。
+    /// 相对于给定的呼叫应用程序刷新队列。不会丢弃来自其他 `callees` 的队列中的条目。
+    /// `1` 表示 `QUEUE_ADD` ——Queue 模式，其中在播放队列的末尾添加了新条目。
+    await flutterTts.setQueueMode(1);
+
+
     /// 等待说话完成。
-    await flutterTts.awaitSpeakCompletion(false);
+    await flutterTts.awaitSpeakCompletion(true);
 
     /// 等待合成文件完成。
     await flutterTts.awaitSynthCompletion(true);

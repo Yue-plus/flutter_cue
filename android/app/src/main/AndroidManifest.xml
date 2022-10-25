@@ -1,35 +1,36 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="zone.yue.flutter_cue">
-  <uses-permission android:name="android.permission.INTERNET"/>
-  <application
-      android:label="FlutterCue!"
-      android:name="${applicationName}"
-      android:icon="@mipmap/ic_launcher">
-    <activity
-        android:name=".MainActivity"
-        android:exported="true"
-        android:launchMode="singleTop"
-        android:theme="@style/LaunchTheme"
-        android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
-        android:hardwareAccelerated="true"
-        android:windowSoftInputMode="adjustResize">
-      <!-- Specifies an Android theme to apply to this Activity as soon as
-           the Android process has started. This theme is visible to the user
-           while the Flutter UI initializes. After that, this theme continues
-           to determine the Window background behind the Flutter UI. -->
-      <meta-data
-          android:name="io.flutter.embedding.android.NormalTheme"
-          android:resource="@style/NormalTheme"
-      />
-      <intent-filter>
-        <action android:name="android.intent.action.MAIN"/>
-        <category android:name="android.intent.category.LAUNCHER"/>
-      </intent-filter>
-    </activity>
-    <!-- Don't delete the meta-data below.
-         This is used by the Flutter tool to generate GeneratedPluginRegistrant.java -->
-    <meta-data
-        android:name="flutterEmbedding"
-        android:value="2"/>
-  </application>
+
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+    <application
+        android:name="${applicationName}"
+        android:icon="@mipmap/ic_launcher"
+        android:label="FlutterCue!">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:exported="true"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:windowSoftInputMode="adjustResize">
+            <!-- 指定在 Android 进程开始后立即应用于此 Activity 的 Android 主题。
+                 当 Flutter UI 初始化时，该主题对用户可见。
+                 之后，这个主题继续确定 Flutter UI 背后的窗口背景。 -->
+            <meta-data
+                android:name="io.flutter.embedding.android.NormalTheme"
+                android:resource="@style/NormalTheme"/>
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <!-- 不要删除下面的 meta-data。
+             这被 Flutter 工具用来生成 GeneratedPluginRegistrant.java -->
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2"/>
+    </application>
 </manifest>
